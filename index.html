@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <title>Muestra de Realidad Aumentada</title>
+    
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+    
+    <script>
+      AFRAME.registerComponent('play-on-target', {
+        schema: { target: { type: 'string' } },
+        init: function () {
+          const targetVideo = document.querySelector(this.data.target);
+          
+          this.el.addEventListener('targetFound', event => {
+            targetVideo.play();
+          });
+          
+          this.el.addEventListener('targetLost', event => {
+            targetVideo.pause();
+          });
+        }
+      });
+    </script>
+  </head>
+  
+  <body>
+    <a-scene 
+      mindar-image="imageTargetSrc: ./targets.mind; filterMinCF:0.0001; filterBeta: 0.001;" 
+      color-space="sRGB" 
+      renderer="colorManagement: true, physicallyCorrectLights" 
+      vr-mode-ui="enabled: false" 
+      device-orientation-permission-ui="enabled: false">
+      
+      <a-assets>
+        <video id="vid1" src="./1_generaciones.mp4" preload="auto" loop muted playsinline webkit-playsinline></video>
+        <video id="vid2" src="./2_abuela.mp4" preload="auto" loop muted playsinline webkit-playsinline></video>
+        <video id="vid3" src="./3_adn.mp4" preload="auto" loop muted playsinline webkit-playsinline></video>
+        <video id="vid4" src="./4_ciencia.mp4" preload="auto" loop muted playsinline webkit-playsinline></video>
+        <video id="vid5" src="./5_familia.mp4" preload="auto" loop muted playsinline webkit-playsinline></video>
+        <video id="vid6" src="./6_garabatos.mp4" preload="auto" loop muted playsinline webkit-playsinline></video>
+        <video id="vid7" src="./7_hermanas.mp4" preload="auto" loop muted playsinline webkit-playsinline></video>
+        <video id="vid8" src="./8_hermanos.mp4" preload="auto" loop muted playsinline webkit-playsinline></video>
+        <video id="vid9" src="./9_juicio.mp4" preload="auto" loop muted playsinline webkit-playsinline></video>
+        <video id="vid10" src="./10_regalo.mp4" preload="auto" loop muted playsinline webkit-playsinline></video>
+        <video id="vid11" src="./11_resolucion.mp4" preload="auto" loop muted playsinline webkit-playsinline></video>
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <a-entity mindar-image-target="targetIndex: 0" play-on-target="target: #vid1">
+        <a-video src="#vid1" position="0 0 0" width="1" height="0.5625"></a-video>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 1" play-on-target="target: #vid2">
+        <a-video src="#vid2" position="0 0 0" width="0.5" height="1"></a-video>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 2" play-on-target="target: #vid3">
+        <a-video src="#vid3" position="0 0 0" width="1" height="0.5625"></a-video>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 3" play-on-target="target: #vid4">
+        <a-video src="#vid4" position="0 0 0" width="1" height="0.5625"></a-video>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 4" play-on-target="target: #vid5">
+        <a-video src="#vid5" position="0 0 0" width="1" height="0.5625"></a-video>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 5" play-on-target="target: #vid6">
+        <a-video src="#vid6" position="0 0 0" width="1" height="0.5625"></a-video>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 6" play-on-target="target: #vid7">
+        <a-video src="#vid7" position="0 0 0" width="1" height="0.5625"></a-video>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 7" play-on-target="target: #vid8">
+        <a-video src="#vid8" position="0 0 0" width="1" height="0.5625"></a-video>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 8" play-on-target="target: #vid9">
+        <a-video src="#vid9" position="0 0 0" width="1" height="0.5625"></a-video>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 9" play-on-target="target: #vid10">
+        <a-video src="#vid10" position="0 0 0" width="1" height="0.5625"></a-video>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 10" play-on-target="target: #vid11">
+        <a-video src="#vid11" position="0 0 0" width="1" height="0.5625"></a-video>
+      </a-entity>
+
+    </a-scene>
+  </body>
+</html>
